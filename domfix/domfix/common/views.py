@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 
 def index(request):
-    return render(request, 'common/home-page.html')
+    return render(request, 'common/index.html')
 
 
 def contacts_page(request):

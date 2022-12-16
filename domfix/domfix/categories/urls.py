@@ -1,8 +1,11 @@
 from django.urls import path
 
-from domfix.categories.views import dry_construction_products, thermal_insulation_products, water_supply_and_sanitation_products, construction_chemistry_products, tools_products, painting_products
+from domfix.categories.views import dry_construction_products, thermal_insulation_products, \
+    water_supply_and_sanitation_products, construction_chemistry_products, tools_products, painting_products, \
+    catalogue
 
 urlpatterns = [
+    path('catalogue/', catalogue, name='catalogue'),
     path('dry_construction/', dry_construction_products, name='dry construction products'),
     path('thermal_insulation/', thermal_insulation_products, name='thermal insulation products'),
     path('water_supply_and_sanitation/', water_supply_and_sanitation_products, name='water supply nand sanitation products'),

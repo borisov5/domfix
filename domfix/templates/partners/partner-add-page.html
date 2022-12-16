@@ -1,10 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base/base.html' %}
+{% block content %}
 
-</body>
-</html>
+{% load placeholders %}
+    <section id="create-page" class="auth">
+        <form id="create" method="post" action="{% url 'add partner' %}">
+            <div class="container">
+                <h1 class="form-create-headline">Създай партньор</h1>
+
+                {{ form.name|placeholder:'Име на артикул: ' }}
+                {{ form.description|placeholder:'Описание: ' }}
+                {{ form.photo|placeholder:'Снимка: ' }}
+
+                <input class="btn" type="submit" value="Създай партньор">
+                {% csrf_token %}
+            </div>
+        </form>
+    </section>
+{% endblock %}
+{% load placeholders %}

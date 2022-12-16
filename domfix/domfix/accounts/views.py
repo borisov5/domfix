@@ -1,21 +1,48 @@
-from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views import generic as views
+from django.contrib.auth import views as auth_views, get_user_model
+from domfix.accounts.forms import UserCreateForm
+
+UserModel = get_user_model()
 
 
-def login_user(request):
-    return render(request, 'accounts/login-page.html')
+class SignInView(auth_views.LoginView):
+    template_name = 'accounts/login-page.html'
 
 
-def register_user(request):
-    return render(request, 'accounts/register-page.html')
+class SignUpView(views.CreateView):
+    template_name = 'accounts/profile-create.html'
+    form_class = UserCreateForm
+    success_url = reverse_lazy('index')
 
 
-def details_user(request):
-    return render(request, 'accounts/profile-details-page.html')
+class SignOutView(auth_views.LogoutView):
+    next_page = reverse_lazy('index')
 
 
-def edit_user(request):
-    return render(request, 'accounts/profile-edit-page.html')
+class UserDetailsView(views.DetailView):
+    template_name = 'accounts/profile-details.html'
+    model = UserModel
 
 
-def delete_user(request):
-    return render(request, 'accounts/profile-delete-page.html')
+class UserEditView(views.UpdateView):
+    template_name = 'accounts/profile-edit.html'
+    model = UserModel
+    fields = (
+        'first_name',
+        'last_name',
+        'age',
+        'email',
+        'profile_picture',
+    )
+
+    def get_success_url(self):
+        return reverse_lazy('details user', kwargs={
+            'pk': self.request.user.pk,
+        })
+
+
+class UserDeleteView(views.DeleteView):
+    template_name = 'accounts/profile-delete.html'
+    model = UserModel
+    success_url = reverse_lazy('index')

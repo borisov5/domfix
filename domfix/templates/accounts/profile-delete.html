@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+  <section id="create-page" class="auth">
+      <div class="container">
+        <h1>Сигурни ли сте, че искате да изтриете профила?</h1>
+        <form id='delete' method="post" action="{% url 'delete user' pk=request.user.pk %}">
+        <input class="btn submit" type="submit" value="Да">
+        {% csrf_token %}
+        </form>
+      </div>
+  </section>
+{% endblock %}

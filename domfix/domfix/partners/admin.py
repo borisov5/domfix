@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from domfix.partners.models import Partner
+
+
+@admin.register(Partner)
+class PartnerAdmin(admin.ModelAdmin):
+    list_display = ('pk', 'name')

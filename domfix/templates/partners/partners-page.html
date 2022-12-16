@@ -1,10 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base/base.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block content %}
+    {% if not partners %}
+    <p class="no-articles">Няма партньори</p>
+    {% else %}
+    <section id="catalogue">
+        {% for partner in partners %}
+        <div class="car-card">
+            <div class="image-wrap">
+                {% if partner.photo %}
+                <img src="{{ partner.photo }}"
+                     alt="Sport Car">.
+                {% endif %}
+            </div>
+            <h3>{{ partner.name }}</h3>
+            <h1>{{ partner.description }}</h1>
+            <div class="details-buttons">
+                <a href="{% url 'details partner' partner.id %}" class="details-btn">Детайли</a>
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+    {% endif %}
+    {% endblock %}

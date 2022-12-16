@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+{% block content %}
+{% load static %}
+    <section id="car-details">
+        <h1>Детайли</h1>
+        <div class="info-section">
+            <div class="car-header">
+                {% if partner.photo %}
+                <img class="car-img"
+                     src="{{ partner.photo }}"
+                     alt='car image'/>
+                {% endif %}
+                <h1>Име: {{ partner.name }}</h1>
+                <p><span class="description">Описание: {{ partner.description }}</span></p>
+
+                {% csrf_token %}
+            </div>
+            <div class="buttons">
+                {% if request.user.is_superuser %}
+                    <a href="{% url 'edit partner' partner.id %}" class="edit-button">Промени</a>
+                    <a href="{% url 'delete partner' partner.id %}" class="delete-button">Изтрий</a>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

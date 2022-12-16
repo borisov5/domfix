@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>ASD</h1>
-</body>
-</html>
+{% extends 'base/base.html' %}
+{% block content %}
+
+{% load placeholders %}
+    <section id="create-page" class="auth">
+        <form id="create" method="post" action="{% url 'add product' %}">
+            <div class="container">
+                <h1 class="form-create-headline">Създай продукт</h1>
+
+                {{ form.name|placeholder:'Име на артикул: ' }}
+                {{ form.category|placeholder:'Категория: ' }}
+                {{ form.description|placeholder:'Описание: ' }}
+                {{ form.availability|placeholder:'Наличност: ' }}
+                {{ form.item_code|placeholder:'Код на артикула: ' }}
+                {{ form.price|placeholder:'Цена: ' }}
+                {{ form.manufacturer|placeholder:'Производител: ' }}
+                {{ form.photo|placeholder:'Снимка: ' }}
+
+                <input class="btn" type="submit" value="Създай продукт">
+                {% csrf_token %}
+            </div>
+        </form>
+    </section>
+{% endblock %}
+{% load placeholders %}

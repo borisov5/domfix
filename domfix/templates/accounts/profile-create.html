@@ -1,0 +1,17 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+{% load placeholders %}
+
+    <section id="register-page" class="content auth">
+        <form method="post" action="{% url 'register user' %}">
+            {{ form.username|placeholder:'Потребителско име: ' }}
+            {{ form.email|placeholder:'Имейл Адрес: ' }}
+            {{ form.password1|placeholder:'Парола: ' }}
+            {{ form.password2|placeholder:'Повтори парола: ' }}
+            <input type="hidden" name="text" value="{{ next }}">
+            <input class="btn submit" type="submit" value="Създай профил">
+            {% csrf_token %}
+        </form>
+    </section>
+{% endblock %}

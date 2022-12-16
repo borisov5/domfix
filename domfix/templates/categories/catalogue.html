@@ -1,0 +1,28 @@
+{% extends 'base/category_base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+    {% if not products %}
+    <p class="no-articles">Няма продукти</p>
+    {% else %}
+    <section id="catalogue">
+        {% for product in products %}
+        <div class="car-card">
+            <div class="image-wrap">
+                {% if product.photo %}
+                <img src="{{ product.photo }}"
+                     alt="Sport Car">.
+                {% endif %}
+            </div>
+            <h3>{{ product.name }}</h3>
+            <h1>{{ product.description }}</h1>
+            <div class="details-buttons">
+                <a href="{% url 'details product' product.id %}" class="details-btn">Details</a>
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+    {% endif %}
+{% endblock %}

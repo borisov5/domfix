@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends 'base/base.html' %}
+{% block content %}
+    <section id="register-page" class="content auth">
+        <form method="post" action="{% url 'login user' %}">
+            {{ form }}
+            <input type="hidden" name="text" value="{{ next }}">
+            <input class="btn submit" type="submit" value="Влез">
+            {% csrf_token %}
+        </form>
+    </section>
+{% endblock %}

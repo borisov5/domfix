@@ -1,0 +1,1 @@
+web: gunicorn --pythonpath domfix domfix.domfix.wsgi

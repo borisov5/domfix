@@ -8,7 +8,10 @@ SECRET_KEY = 'django-insecure-vpm%vovjpqs*ndy#0)wq3-us4ugy4_9@swg!p=56=)(qkk!k0@
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'domfix.herokuapp.com',
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -93,10 +96,15 @@ USE_I18N = True
 USE_TZ = True
 
 # STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATIC_URL = 'static/'
-
+# STATIC_URL = 'static/'
+#
+# STATICFILES_DIRS = (
+#     BASE_DIR / 'static',
+# )
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    BASE_DIR / 'static',
+    BASE_DIR / 'static'
 )
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

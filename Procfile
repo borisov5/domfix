@@ -1,1 +1,2 @@
-web: gunicorn --pythonpath domfix domfix.domfix.wsgi
+web: gunicorn --pythonpath domfix domfix.wsgi
+release: python manage.py migrate

@@ -12,9 +12,9 @@
                 <h1>Име: {{ product.name }}</h1>
                 <p><span class="description">Категория: {{ product.category }}</span></p>
                 <p><span class="description">Описание: {{ product.description }}</span></p>
-                <p><span class="description">Наличност: {{ product.availability }}</span></p>
-                <p><span class="description">Код на продукт:{{ product.item_code }}</span></p>
-                <p><span class="description">Цена: {{ product.price }}</span></p>
+                <p><span class="description">Наличност: {{ product.availability }} бр.</span></p>
+                <p><span class="description">Код на продукт: {{ product.item_code }}</span></p>
+                <p><span class="description">Цена: {{ product.price }}лв.</span></p>
                 <p><span class="description">Производител: {{ product.manufacturer }}</span></p>
 
                 {% csrf_token %}
@@ -22,7 +22,7 @@
 
             <div class="buttons">
                 {% if request.user.is_superuser %}
-                <a href="{% url 'edit product' product.id %}" class="edit-button">Промени</a>
+                <a href="{% url 'edit product' product.id %}" class="edit-button">Редактирай</a>
                 <a href="{% url 'delete product' product.id %}" class="delete-button">Изтрий</a>
                 {% endif %}
             </div>

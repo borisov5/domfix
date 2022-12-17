@@ -1,6 +1,6 @@
 from django.urls import reverse_lazy
 from django.views import generic as views
-from django.contrib.auth import views as auth_views, get_user_model
+from django.contrib.auth import views as auth_views, get_user_model, login
 from domfix.accounts.forms import UserCreateForm
 
 UserModel = get_user_model()
@@ -14,6 +14,11 @@ class SignUpView(views.CreateView):
     template_name = 'accounts/profile-create.html'
     form_class = UserCreateForm
     success_url = reverse_lazy('index')
+
+    # def post(self, request, *args, **kwargs):
+    #     response = super().post(request, *args, **kwargs)
+    #     login(request, self.object)
+    #     return response
 
 
 class SignOutView(auth_views.LogoutView):

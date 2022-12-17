@@ -58,14 +58,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'domfix.wsgi.application'
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'Domfix_db',
+#         'USER': 'postgres',
+#         'PASSWORD': '123456',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Domfix_db',
-        'USER': 'postgres',
-        'PASSWORD': '123456',
-        # 'HOST': 'localhost',
-        # 'PORT': '5432',
+        'NAME': 'd7vv0hvrcaepn1',
+        'USER': 'kfliysronyvaam',
+        'PASSWORD': 'bf6c4714086a97e2d8321905cd2fe9e032ad9062a8f2d5a625d7bb799026c187',
+        'HOST': 'ec2-63-35-156-160.eu-west-1.compute.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
